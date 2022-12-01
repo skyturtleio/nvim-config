@@ -41,7 +41,7 @@ packer.init {
   },
 }
 
--- Install your plugins here
+-- Install plugins here
 return packer.startup(function(use)
   -- Have packer manage itself, updated 2022-11-26
   use { "wbthomason/packer.nvim", commit = "6afb674" }
