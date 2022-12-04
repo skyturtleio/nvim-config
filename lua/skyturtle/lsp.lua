@@ -3,6 +3,8 @@ require("mason-lspconfig").setup({
   ensure_installed = { "denols", "html", "sumneko_lua", "tsserver" }
 })
 
+local util = require("lspconfig.util")
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -36,6 +38,18 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
+require("lspconfig").tsserver.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  root_dir = util.root_pattern("package.json")
+}
+
+require("lspconfig").denols.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+}
+
 require("lspconfig").sumneko_lua.setup{
   on_attach = on_attach,
   flags = lsp_flags,
@@ -47,5 +61,6 @@ require("lspconfig").sumneko_lua.setup{
       },
     },
   },
-
 }
+
+
