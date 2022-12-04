@@ -18,3 +18,9 @@ require "user.indentline"
 require "skyturtle.lsp"
 -- require "user.lsp"
 -- require "user.dap"
+--
+vim.filetype.add {
+  extension = {
+    astro = "astro",
+  },
+}

@@ -48,6 +48,10 @@ require("lspconfig").denols.setup{
   root_dir = util.root_pattern("deno.json", "deno.jsonc"),
 }
 
+require("lspconfig").astro.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
 
 require("lspconfig").pyright.setup{
   on_attach = on_attach,
