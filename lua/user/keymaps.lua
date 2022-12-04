@@ -45,6 +45,9 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
+-- Close window
+keymap("n", "<leader>wc", ":clo<CR>", opts)
+
 -- Better paste
 keymap("v", "p", '"_dP', opts)
 
