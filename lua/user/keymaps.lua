@@ -14,6 +14,13 @@ vim.g.mapleader = " "
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
+--
+
+-- Keys
+--   ctrl - example below is ctrl + h
+--   keymap("n", "<C-h>", "<C-w>h", opts)
+--   shift - example below is shift + l
+--   keymap("n", "<S-l>", ":bnext<CR>", opts)
 
 -- Normal --
 -- Better window navigation
@@ -53,14 +60,16 @@ keymap("v", ">", ">gv", opts)
 -- Plugins --
 
 -- LSP 
--- See skyturtle.lsp for keymaps when LSP is active in buffer
+-- See skyturtle.lsp for keymaps related to "hover", "go to definition", etc.
+keymap("n", "<leader>li", ":LspInfo<CR>", opts)
+keymap("n", "<leader>lr", ":LspRestart<CR>", opts)
 
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) -- "Find file"
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 -- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 
