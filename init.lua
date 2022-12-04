@@ -1,7 +1,6 @@
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
--- require "user.autocommands"
 require "user.colorscheme"
 require "user.cmp"
 require "user.telescope"
@@ -16,11 +15,5 @@ require "user.impatient"
 require "user.illuminate"
 require "user.indentline"
 require "skyturtle.lsp"
--- require "user.lsp"
 -- require "user.dap"
---
-vim.filetype.add {
-  extension = {
-    astro = "astro",
-  },
-}
+-- require "user.autocommands"
