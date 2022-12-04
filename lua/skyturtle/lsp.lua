@@ -1,7 +1,5 @@
 require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = { "denols", "html", "sumneko_lua", "tsserver" }
-})
+require("mason-lspconfig").setup()
 
 local util = require("lspconfig.util")
 
@@ -41,13 +39,19 @@ local lsp_flags = {
 require("lspconfig").tsserver.setup{
   on_attach = on_attach,
   flags = lsp_flags,
-  root_dir = util.root_pattern("package.json")
+  root_dir = util.root_pattern("package.json", "tsconfig.json")
 }
 
 require("lspconfig").denols.setup{
   on_attach = on_attach,
   flags = lsp_flags,
   root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+
+require("lspconfig").pyright.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
 }
 
 require("lspconfig").sumneko_lua.setup{
