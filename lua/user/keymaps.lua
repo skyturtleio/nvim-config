@@ -52,6 +52,9 @@ keymap("v", ">", ">gv", opts)
 
 -- Plugins --
 
+-- LSP 
+-- See skyturtle.lsp for keymaps when LSP is active in buffer
+
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
