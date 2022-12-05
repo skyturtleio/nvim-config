@@ -1,6 +1,7 @@
 -- Used to set root_dir in LSP setup() functions
 local util = require("lspconfig.util")
 
+-- [[ LSP Configuration ]]
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
@@ -112,4 +113,5 @@ require("lspconfig").sumneko_lua.setup{
   },
 }
 
-
+-- Turn on LSP status information
+require('fidget').setup()
