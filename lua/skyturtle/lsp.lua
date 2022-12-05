@@ -1,6 +1,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
+-- Used to set root_dir in LSP setup() functions
 local util = require("lspconfig.util")
 
 -- Mappings.
