@@ -1,19 +1,3 @@
--- Setup mason so it can manage external tooling
-require("mason").setup()
-
--- Enable the following language servers to pass to `mason-lspconfig.setup()`
-local servers = {
-  'astro',
-  'denols',
-  'pyright',
-  'sumneko_lua',
-  'tsserver',
-}
-
-require("mason-lspconfig").setup({
-  ensure_installed = servers
-})
-
 -- Used to set root_dir in LSP setup() functions
 local util = require("lspconfig.util")
 
@@ -61,14 +45,31 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+-- Setup mason so it can manage external tooling
+require("mason").setup()
+
+-- Enable the following language servers
+local servers = {
+  'astro',
+  'denols',
+  'pyright',
+  'sumneko_lua',
+  'tsserver',
+}
+
+require("mason-lspconfig").setup({
+  -- servers are passed from above
+  ensure_installed = servers
+})
+
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   -- debounce_text_changes = 150,
 }
 
--- nvim-cmp supports additional completion capabilities
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- nvim-cmp supports additional completion capabilities (from kickstart.nvim)
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require("lspconfig").tsserver.setup{
   on_attach = on_attach,
