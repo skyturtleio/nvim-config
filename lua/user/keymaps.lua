@@ -1,3 +1,5 @@
+-- [[ Keymaps ]]
+
 -- Shorten function name
 local keymap = vim.keymap.set
 -- Silent keymap option
@@ -7,22 +9,21 @@ local opts = { silent = true }
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
---
+-- [[ Modes ]]
+--    normal_mode = "n",
+--    insert_mode = "i",
+--    visual_mode = "v",
+--    visual_block_mode = "x",
+--    term_mode = "t",
+--    command_mode = "c",
 
--- Keys
+-- [[ Keys ]]
 --   ctrl - example below is ctrl + h
---   keymap("n", "<C-h>", "<C-w>h", opts)
+--      keymap("n", "<C-h>", "<C-w>h", opts)
 --   shift - example below is shift + l
---   keymap("n", "<S-l>", ":bnext<CR>", opts)
+--      keymap("n", "<S-l>", ":bnext<CR>", opts)
 
--- Normal --
+-- Normal Mode --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -51,7 +52,7 @@ keymap("n", "<leader>wc", ":clo<CR>", opts)
 -- Better paste
 keymap("v", "p", '"_dP', opts)
 
--- Insert --
+-- Insert Mode --
 -- Press jj fast to escape
 keymap("i", "jj", "<ESC>", opts)
 
@@ -60,7 +61,7 @@ keymap("i", "jj", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Plugins --
+-- [[Plugins ]]
 
 -- LSP 
 -- See skyturtle.lsp for keymaps related to "hover", "go to definition", etc.
