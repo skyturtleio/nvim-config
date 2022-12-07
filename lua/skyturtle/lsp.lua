@@ -58,6 +58,7 @@ local servers = {
   'sumneko_lua',
   'svelte',
   'tsserver',
+  'tailwindcss',
 }
 
 require("mason-lspconfig").setup({
@@ -115,6 +116,12 @@ require("lspconfig").sumneko_lua.setup{
 }
 
 require("lspconfig").svelte.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.tailwindcss.setup{
   on_attach = on_attach,
   capabilities = capabilities,
   flags = lsp_flags,
