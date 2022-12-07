@@ -55,6 +55,7 @@ local servers = {
   'denols',
   'pyright',
   'sumneko_lua',
+  'svelte',
   'tsserver',
 }
 
@@ -84,6 +85,12 @@ require("lspconfig").denols.setup{
   capabilities = capabilities,
   flags = lsp_flags,
   root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+require("lspconfig").svelte.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags,
 }
 
 require("lspconfig").astro.setup{
