@@ -11,6 +11,7 @@ end
 configs.setup({
   -- put the language parsers you want in this table
   ensure_installed = {
+    "astro",
     "bash",
     "javascript",
     "help",

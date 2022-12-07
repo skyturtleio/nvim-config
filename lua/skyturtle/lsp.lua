@@ -134,10 +134,5 @@ require("lspconfig").tsserver.setup{
   root_dir = util.root_pattern("package.json", "tsconfig.json")
 }
 
-
-
-
-
-
 -- Turn on LSP status information
 require('fidget').setup()

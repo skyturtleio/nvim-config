@@ -61,8 +61,13 @@ keymap("i", "jj", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- [[Plugins ]]
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
+-- [[Plugins ]]
 -- LSP 
 -- See skyturtle.lsp for keymaps related to "hover", "go to definition", etc.
 keymap("n", "<leader>li", ":LspInfo<CR>", opts)
