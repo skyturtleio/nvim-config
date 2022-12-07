@@ -9,7 +9,7 @@ if not status_ok then
 end
 
 configs.setup({
-  -- put the languages you want in this table
+  -- put the language parsers you want in this table
   ensure_installed = {
     "bash",
     "javascript",
@@ -18,7 +18,9 @@ configs.setup({
     "markdown",
     "markdown_inline",
     "python",
+    "rust",
     "svelte",
+    "toml",
     "tsx",
     "typescript",
     "vim",

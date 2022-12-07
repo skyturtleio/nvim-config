@@ -54,6 +54,7 @@ local servers = {
   'astro',
   'denols',
   'pyright',
+  'rust-analyzer',
   'sumneko_lua',
   'svelte',
   'tsserver',
@@ -73,11 +74,10 @@ local lsp_flags = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-require("lspconfig").tsserver.setup{
+require("lspconfig").astro.setup{
   on_attach = on_attach,
   capabilities = capabilities,
   flags = lsp_flags,
-  root_dir = util.root_pattern("package.json", "tsconfig.json")
 }
 
 require("lspconfig").denols.setup{
@@ -87,19 +87,13 @@ require("lspconfig").denols.setup{
   root_dir = util.root_pattern("deno.json", "deno.jsonc"),
 }
 
-require("lspconfig").svelte.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = lsp_flags,
-}
-
-require("lspconfig").astro.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = lsp_flags,
-}
-
 require("lspconfig").pyright.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags,
+}
+
+require'lspconfig'.rust_analyzer.setup{
   on_attach = on_attach,
   capabilities = capabilities,
   flags = lsp_flags,
@@ -119,6 +113,24 @@ require("lspconfig").sumneko_lua.setup{
     },
   },
 }
+
+require("lspconfig").svelte.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags,
+}
+
+require("lspconfig").tsserver.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags,
+  root_dir = util.root_pattern("package.json", "tsconfig.json")
+}
+
+
+
+
+
 
 -- Turn on LSP status information
 require('fidget').setup()
