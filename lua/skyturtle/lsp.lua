@@ -56,7 +56,7 @@ local servers = {
   'denols',
   'jsonls',
   'pyright',
-  'rust-analyzer',
+  'rust_analyzer',
   'sumneko_lua',
   'svelte',
   'tsserver',

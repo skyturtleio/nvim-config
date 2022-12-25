@@ -39,17 +39,17 @@ return packer.startup(function(use)
   use { "wbthomason/packer.nvim", commit = "6afb674" }
 
   -- LSP Configuration
-  use { "williamboman/mason.nvim", commit = "c2002d7a6b5a72ba02388548cfaf420b864fbc12" }
-  use { "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" }
-  use { "neovim/nvim-lspconfig", commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda" } -- enable LSP
+  use { "williamboman/mason.nvim"}
+  use { "williamboman/mason-lspconfig.nvim"}
+  use { "neovim/nvim-lspconfig"} -- enable LSP
   use { 'j-hui/fidget.nvim' }
 
   --Autocompletion
-  use { "hrsh7th/nvim-cmp", commit = "431f0459681724c97e58899272b6acf5ff039cba" } -- The completion plugin
-  use { "hrsh7th/cmp-nvim-lsp", commit = "5922477" }
-  use { "L3MON4D3/LuaSnip", commit = "8f8d493e7836f2697df878ef9c128337cbf2bb84" } --snippet engine
-  use { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" } -- snippet completions
-  use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" } -- nvim-cmp source for neovim Lua API.
+  use { "hrsh7th/nvim-cmp"} -- The completion plugin
+  use { "hrsh7th/cmp-nvim-lsp"}
+  use { "L3MON4D3/LuaSnip"} --snippet engine
+  use { "saadparwaiz1/cmp_luasnip"} -- snippet completions
+  use { "hrsh7th/cmp-nvim-lua"} -- nvim-cmp source for neovim Lua API.
 
   -- snippets
   -- use { "rafamadriz/friendly-snippets", commit = "2be79d8a9b03d4175ba6b3d14b082680de1b31b1" } -- a bunch of snippets to use
@@ -74,6 +74,8 @@ return packer.startup(function(use)
   -- Customize the buffer lines
   use { "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" }
 
+  use { "edgedb/edgedb-vim" }
+
   -- Still need to evaluate these plugins
   use { "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" } -- for formatters and linters
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" }
@@ -88,7 +90,6 @@ return packer.startup(function(use)
   use { "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" }
   use { "lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83" }
   use "kaicataldo/material.vim"
-
 
   -- Git
   use { "lewis6991/gitsigns.nvim", commit = "f98c85e7c3d65a51f45863a34feb4849c82f240f" }
