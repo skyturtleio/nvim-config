@@ -48,11 +48,11 @@ lualine.setup {
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { "filename" },
+    lualine_a = { {"filename", path = 1 } },
     lualine_b = {"branch"},
     lualine_c = { diagnostics },
-    lualine_x = { diff, spaces, "encoding", filetype },
-    lualine_y = { location },
-    lualine_z = { "progress" },
+    lualine_x = { diff, spaces },
+    lualine_y = { "encoding", {"filetype", colored = true}  },
+    lualine_z = { "location" },
   },
 }
