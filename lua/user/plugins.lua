@@ -44,6 +44,9 @@ return packer.startup(function(use)
   use { "neovim/nvim-lspconfig"} -- enable LSP
   use { 'j-hui/fidget.nvim' }
 
+  -- Null ls 
+  use { "jose-elias-alvarez/null-ls.nvim" }
+
   --Autocompletion
   use { "hrsh7th/nvim-cmp"} -- The completion plugin
   use { "hrsh7th/cmp-nvim-lsp"}
