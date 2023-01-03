@@ -69,6 +69,7 @@ require("mason").setup()
 local servers = {
 	"astro",
 	"denols",
+	"elixirls",
 	"jsonls",
 	"pyright",
 	"rust_analyzer",
@@ -103,6 +104,12 @@ require("lspconfig").denols.setup({
 	capabilities = capabilities,
 	flags = lsp_flags,
 	root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+})
+
+require("lspconfig").elixirls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	flags = lsp_flags,
 })
 
 require("lspconfig").jsonls.setup({

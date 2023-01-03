@@ -13,8 +13,9 @@ configs.setup({
   ensure_installed = {
     "astro",
     "bash",
-    "javascript",
+    "elixir",
     "help",
+    "javascript",
     "lua",
     "markdown",
     "markdown_inline",
