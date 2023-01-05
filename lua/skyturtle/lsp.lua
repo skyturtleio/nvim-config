@@ -1,9 +1,8 @@
 -- Used to set root_dir in LSP setup() functions
 local util = require("lspconfig.util")
 
--- [[ LSP Configuration ]]
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
+-- LSP settings.
+--  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
 	-- NOTE: Remember that lua is a real programming language, and as such it is possible
 	-- to define small helper and utility functions so you don't have to repeat yourself
@@ -19,13 +18,16 @@ local on_attach = function(_, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
+	nmap("<leader>li", ":LspInfo<CR>", "[L]SP [i]nfo")
+	nmap("<leader>lr", ":LspRestart<CR>", "[L]SP [R]estart")
+
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-	nmap("<leader>lf", ":Format<CR>", "[L]sp [F]ormat")
 	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
@@ -35,145 +37,123 @@ local on_attach = function(_, bufnr)
 
 	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
+	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+	nmap("<leader>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, "[W]orkspace [L]ist Folders")
 
 	-- Create a command `:Format` local to the LSP buffer
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-		if vim.lsp.buf.format then
-			vim.lsp.buf.format()
-		elseif vim.lsp.buf.formatting then
-			vim.lsp.buf.formatting()
-		end
-	end, { desc = "Format current buffer with LSP" })
-
-	vim.api.nvim_create_autocmd("CursorHold", {
-		buffer = bufnr,
-		callback = function()
-			local opts = {
-				focusable = false,
-				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = "rounded",
-				source = "always",
-				prefix = " ",
-				scope = "cursor",
-			}
-			vim.diagnostic.open_float(nil, opts)
-		end,
-	})
+		vim.lsp.buf.format()
+		end, { desc = "Format current buffer with LSP" })
 end
+
+-- Enable the following language servers
+--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+--
+--  Add any additional override configuration in the following tables. They will be passed to
+--  the `settings` field of the server config. You must look up that documentation yourself.
+local servers = {
+	astro = {},
+	denols = {},
+	elixirls = {},
+	pyright = {},
+	rust_analyzer = {},
+	sumneko_lua = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+		},
+	},
+	svelte = {},
+	tsserver = {},
+}
+
+-- Setup neovim lua configuration
+require("neodev").setup()
+--
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require("mason").setup()
 
--- Enable the following language servers
-local servers = {
-	"astro",
-	"denols",
-	"elixirls",
-	"jsonls",
-	"pyright",
-	"rust_analyzer",
-	"sumneko_lua",
-	"svelte",
-	"tsserver",
-	"tailwindcss",
-}
+-- Ensure the servers above are installed
+local mason_lspconfig = require("mason-lspconfig")
 
-require("mason-lspconfig").setup({
-	-- servers are passed from above
-	ensure_installed = servers,
+mason_lspconfig.setup({
+	ensure_installed = vim.tbl_keys(servers),
 })
 
-local lsp_flags = {
-	-- This is the default in Nvim 0.7+
-	-- debounce_text_changes = 150,
-}
-
--- nvim-cmp supports additional completion capabilities (from kickstart.nvim)
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-require("lspconfig").astro.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
+mason_lspconfig.setup_handlers({
+	function(server_name)
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = servers[server_name],
+		})
+	end,
+	["denols"] = function ()
+		require("lspconfig").denols.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+		})
+	end,
+	["tsserver"] = function ()
+		require("lspconfig").tsserver.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = util.root_pattern("package.json"),
+		})
+	end,
 })
 
-require("lspconfig").denols.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-	root_dir = util.root_pattern("deno.json", "deno.jsonc"),
-})
+-- nvim-cmp setup
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
-require("lspconfig").elixirls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-})
-
-require("lspconfig").jsonls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-})
-
-require("lspconfig").pyright.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-})
-
-require("lspconfig").rust_analyzer.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-})
-
-require("lspconfig").sumneko_lua.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-	settings = {
-		Lua = {
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-			telemetry = { enable = false },
-		},
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
 	},
-})
-
-require("lspconfig").svelte.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-})
-
-require("lspconfig").tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-})
-
-require("lspconfig").tsserver.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	flags = lsp_flags,
-	root_dir = util.root_pattern("package.json", "tsconfig.json"),
-})
-
--- Turn on LSP status information
-require("fidget").setup()
-
--- null-ls setup
-local null_ls = require("null-ls")
-
-null_ls.setup({
+	mapping = cmp.mapping.preset.insert({
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	}),
 	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 	},
 })
 
@@ -182,7 +162,7 @@ null_ls.setup({
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 vim.diagnostic.config({
-  virtual_text = false,
+	virtual_text = false,
 })
 vim.o.updatetime = 250
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
