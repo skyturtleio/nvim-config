@@ -1,3 +1,10 @@
+-- From nvim-tree docs
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
 -- Install packer
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local is_bootstrap = false
@@ -95,6 +102,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Set relativenumber
+vim.opt.relativenumber = true
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -125,6 +135,9 @@ vim.cmd([[colorscheme onedark]])
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
+vim.o.termguicolors = true
+vim.o.shiftwidth = 4
+
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -150,6 +163,41 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
+
+-- Shorten function name
+local keymap = vim.keymap.set
+-- Silent keymap option
+local opts = { silent = true }
+
+-- Press jj fast to escape
+keymap("i", "jj", "<ESC>", opts)
+-- [[ Modes ]]
+--    normal_mode = "n",
+--    insert_mode = "i",
+--    visual_mode = "v",
+--    visual_block_mode = "x",
+--    term_mode = "t",
+--    command_mode = "c",
+
+-- [[ Keys ]]
+--   ctrl - example below is ctrl + h
+--      keymap("n", "<C-h>", "<C-w>h", opts)
+--   shift - example below is shift + l
+--      keymap("n", "<S-l>", ":bnext<CR>", opts)
+
+-- Normal Mode --
+-- Better window navigation
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Resize with arrows
+keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-Down>", ":resize +2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
@@ -216,6 +264,7 @@ vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc
 vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+vim.keymap.set("n", "<leader>sk", require("telescope.builtin").keymaps, { desc = "[S]earch [K]eymaps" })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -238,12 +287,12 @@ require("nvim-treesitter.configs").setup({
 	indent = { enable = true, disable = { "python" } },
 	incremental_selection = {
 		enable = true,
-		keymaps = {
-			init_selection = "<c-space>",
-			node_incremental = "<c-space>",
-			scope_incremental = "<c-s>",
-			node_decremental = "<c-backspace>",
-		},
+    keymaps = {
+      init_selection = "<c-space>",
+      node_incremental = "<c-space>",
+      scope_incremental = "<c-s>",
+      node_decremental = "<c-backspace>",
+    },
 	},
 	textobjects = {
 		select = {
@@ -434,6 +483,11 @@ cmp.setup({
 		{ name = "luasnip" },
 	},
 })
+
+-- NvimTree
+require("nvim-tree").setup()
+-- Togggle NvimTree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
