@@ -57,11 +57,6 @@ keymap("i", "jj", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- [[Plugins ]]
 -- LSP 
@@ -76,25 +71,3 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) -- "Find file"
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
--- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
-
--- Git
--- keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
--- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
-
--- DAP
--- keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
--- keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
--- keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
--- keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
--- keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
--- keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
--- keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
--- keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
--- keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
-
--- Use bunx for prettier
-keymap("n", "<leader>bf", ":!bunx prettier --write %<CR>", opts)
