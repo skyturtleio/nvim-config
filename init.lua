@@ -14,12 +14,7 @@ require("skyturtle.telescope")
 require("skyturtle.treesitter")
 require("skyturtle.lsp")
 require("fidget").setup() -- Turn on lsp status information
-
-
--- NvimTree
-require("nvim-tree").setup()
--- Togggle NvimTree
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {silent = true, desc = "File [E]xplorer"})
+require("skyturtle/nvimtree")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
