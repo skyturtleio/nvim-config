@@ -1,9 +1,10 @@
 -- Used to set root_dir in LSP setup() functions
 local util = require("lspconfig.util")
+local nls = require("skyturtle/null-user")
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	-- NOTE: Remember that lua is a real programming language, and as such it is possible
 	-- to define small helper and utility functions so you don't have to repeat yourself
 	-- many times.
@@ -36,17 +37,29 @@ local on_attach = function(_, bufnr)
 	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
 	-- Lesser used LSP functionality
-	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-	nmap("<leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, "[W]orkspace [L]ist Folders")
+	-- nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	-- nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+	-- nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+	-- nmap("<leader>wl", function()
+	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	-- end, "[W]orkspace [L]ist Folders")
 
 	-- Create a command `:Format` local to the LSP buffer
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 		vim.lsp.buf.format()
-		end, { desc = "Format current buffer with LSP" })
+	end, { desc = "Format current buffer with LSP" })
+
+	-- Formatting on save with null-ls
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = nls.augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = nls.augroup,
+			buffer = bufnr,
+			callback = function()
+				nls.lsp_formatting(bufnr)
+			end,
+		})
+	end
 end
 
 -- Enable the following language servers
@@ -98,14 +111,14 @@ mason_lspconfig.setup_handlers({
 			settings = servers[server_name],
 		})
 	end,
-	["denols"] = function ()
+	["denols"] = function()
 		require("lspconfig").denols.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 			root_dir = util.root_pattern("deno.json", "deno.jsonc"),
 		})
 	end,
-	["tsserver"] = function ()
+	["tsserver"] = function()
 		require("lspconfig").tsserver.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
@@ -165,4 +178,4 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 vim.o.updatetime = 250
-vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
