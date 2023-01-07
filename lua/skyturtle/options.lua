@@ -34,5 +34,5 @@ vim.cmd([[colorscheme onedark]])
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
