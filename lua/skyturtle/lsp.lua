@@ -104,7 +104,7 @@ mason_lspconfig.setup({
 })
 
 mason_lspconfig.setup_handlers({
-	function(server_name)
+	function(server_name) -- generic handler
 		require("lspconfig")[server_name].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
