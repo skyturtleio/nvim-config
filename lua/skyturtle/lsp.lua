@@ -1,6 +1,5 @@
 -- Used to set root_dir in LSP setup() functions
 local util = require("lspconfig.util")
-local nls = require("skyturtle/null-user")
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -48,18 +47,6 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 		vim.lsp.buf.format()
 	end, { desc = "Format current buffer with LSP" })
-
-	-- Formatting on save with null-ls
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_clear_autocmds({ group = nls.augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = nls.augroup,
-			buffer = bufnr,
-			callback = function()
-				nls.lsp_formatting(bufnr)
-			end,
-		})
-	end
 end
 
 -- Enable the following language servers

@@ -14,7 +14,7 @@ require("skyturtle.treesitter")
 require("skyturtle.lsp")
 require("fidget").setup() -- Turn on lsp status information
 require("skyturtle/nvimtree")
-require("skyturtle/null-user")
+require("skyturtle/null-ls")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
