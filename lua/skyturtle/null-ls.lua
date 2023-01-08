@@ -5,7 +5,9 @@ local sources = {
 		extra_filetypes = { "svelte" },
 	}),
 	null_ls.builtins.formatting.stylua,
-	null_ls.builtins.diagnostics.eslint,
+	null_ls.builtins.diagnostics.eslint_d.with({
+		extra_filetypes = { "svelte" },
+	}),
 }
 
 -- Format on save
