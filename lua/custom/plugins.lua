@@ -25,4 +25,7 @@ return function(use)
 		"bluz71/vim-moonfly-colors",
 		branch = "cterm-compat",
 	})
+	use({
+		"projekt0n/github-nvim-theme",
+	})
 end

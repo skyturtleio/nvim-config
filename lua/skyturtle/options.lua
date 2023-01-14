@@ -33,6 +33,9 @@ vim.o.termguicolors = true -- enables highlight groups
 -- vim.cmd [[colorscheme moonfly]]
 local everblush = require("everblush")
 everblush.setup({ nvim_tree = { contrast = true } }) -- or use contrast = false to not apply contrast
+-- require("github-theme").setup({
+-- 	theme_style = "dark",
+-- })
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
