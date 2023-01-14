@@ -29,7 +29,9 @@ vim.wo.signcolumn = "yes"
 
 -- Set colorscheme
 vim.o.termguicolors = true -- enables highlight groups
-vim.cmd([[colorscheme onedark]])
+-- vim.cmd([[colorscheme onedark]])
+local everblush = require("everblush")
+everblush.setup({ nvim_tree = { contrast = true } }) -- or use contrast = false to not apply contrast
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
