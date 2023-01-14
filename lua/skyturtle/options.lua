@@ -30,6 +30,7 @@ vim.wo.signcolumn = "yes"
 -- Set colorscheme
 vim.o.termguicolors = true -- enables highlight groups
 -- vim.cmd([[colorscheme onedark]])
+-- vim.cmd [[colorscheme moonfly]]
 local everblush = require("everblush")
 everblush.setup({ nvim_tree = { contrast = true } }) -- or use contrast = false to not apply contrast
 
