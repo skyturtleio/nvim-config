@@ -4,6 +4,8 @@ require("nvim-treesitter.configs").setup({
 	-- Add languages to be installed here that you want installed for treesitter
 	ensure_installed = {
 		"elixir",
+		"eex",
+		"heex",
 		"go",
 		"javascript",
 		"lua",
