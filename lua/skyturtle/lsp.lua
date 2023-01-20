@@ -58,6 +58,7 @@ local servers = {
 	astro = {},
 	denols = {},
 	elixirls = {},
+	html = {},
 	pyright = {},
 	rust_analyzer = {},
 	sumneko_lua = {
@@ -96,6 +97,13 @@ mason_lspconfig.setup_handlers({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = servers[server_name],
+		})
+	end,
+	["html"] = function()
+		require("lspconfig").html.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "html", "heex" },
 		})
 	end,
 	["denols"] = function()
