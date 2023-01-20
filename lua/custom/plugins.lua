@@ -28,4 +28,7 @@ return function(use)
 	use({
 		"projekt0n/github-nvim-theme",
 	})
+	use({
+		"rafamadriz/friendly-snippets",
+	})
 end
