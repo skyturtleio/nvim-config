@@ -125,7 +125,7 @@ mason_lspconfig.setup_handlers({
 -- nvim-cmp setup
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-require("luasnip.loaders.from_snipmate").lazy_load()
+require("luasnip.loaders.from_snipmate").load()
 
 cmp.setup({
 	snippet = {
