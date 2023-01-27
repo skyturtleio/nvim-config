@@ -31,4 +31,7 @@ return function(use)
 	use({
 		"rafamadriz/friendly-snippets",
 	})
+	use({
+		"tpope/vim-surround",
+	})
 end
