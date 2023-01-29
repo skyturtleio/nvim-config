@@ -4,7 +4,7 @@ local sources = {
 	null_ls.builtins.formatting.mix,
 	null_ls.builtins.formatting.deno_fmt,
 	null_ls.builtins.formatting.dprint.with({
-		extra_filetypes = { "svelte" },
+		extra_filetypes = { "astro", "svelte" },
 	}),
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.diagnostics.eslint_d.with({
