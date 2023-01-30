@@ -4,6 +4,7 @@ require("nvim-treesitter.configs").setup({
 	-- Add languages to be installed here that you want installed for treesitter
 	ensure_installed = {
 		"astro",
+		"css",
 		"elixir",
 		"eex",
 		"heex",
@@ -13,6 +14,7 @@ require("nvim-treesitter.configs").setup({
 		"python",
 		"rust",
 		"svelte",
+		"tsx",
 		"typescript",
 		"help",
 		"vim",
