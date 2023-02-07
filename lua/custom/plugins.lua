@@ -34,4 +34,7 @@ return function(use)
 	use({
 		"tpope/vim-surround",
 	})
+	use({
+		"edgedb/edgedb-vim",
+	})
 end
