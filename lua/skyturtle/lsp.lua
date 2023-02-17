@@ -118,6 +118,7 @@ mason_lspconfig.setup_handlers({
 			on_attach = on_attach,
 			capabilities = capabilities,
 			root_dir = util.root_pattern("package.json"),
+			single_file_support = false,
 		})
 	end,
 })
