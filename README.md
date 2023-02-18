@@ -11,3 +11,10 @@ Build up the features and keymaps that I want from here.
 ## TODO
 
 - [ ]
+
+## Plugins
+
+### nvim-tree
+
+- Normal mode: `I` to toggle Git ignored files
+- Normal mode: `H` to toggle hidden files
