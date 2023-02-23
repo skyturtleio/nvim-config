@@ -92,17 +92,7 @@ snippet width
 	width="${1}"
 # Elements
 snippet a
-	<a href="${1:#}">${0:$1}</a>
-snippet a.
-	<a class="${1}" href="${2:#}">${0:$1}</a>
-snippet a#
-	<a id="${1}" href="${2:#}">${0:$1}</a>
-snippet a:ext
-	<a href="http://${1:example.com}">${0:$1}</a>
-snippet a:mail
-	<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${0:email me}</a>
-snippet ac
-	<a href="`@+`">${0:`@+`}</a>
+	<a href="${1:#}">${0}</a>
 snippet abbr
 	<abbr title="${1}">${0}</abbr>
 snippet address
@@ -322,15 +312,7 @@ snippet footer#
 		${0}
 	</footer>
 snippet form
-	<form action="${1}" method="${2:post}">
-		${0}
-	</form>
-snippet form.
-	<form class="${1}" action="${2}" method="${3:post}">
-		${0}
-	</form>
-snippet form#
-	<form id="${1}" action="${2}" method="${3:post}">
+	<form action="${1}" method="${2:POST}">
 		${0}
 	</form>
 snippet h1
@@ -731,7 +713,7 @@ snippet span#
 snippet strong
 	<strong>${0}</strong>
 snippet style
-	<style type="text/css" media="${1:all}">
+	<style>
 		${0}
 	</style>
 snippet sub
