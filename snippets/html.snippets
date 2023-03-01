@@ -93,67 +93,6 @@ snippet width
 # Elements
 snippet a
 	<a href="${1:#}">${0}</a>
-snippet abbr
-	<abbr title="${1}">${0}</abbr>
-snippet address
-	<address>
-		${0}
-	</address>
-snippet area
-	<area shape="${1:rect}" coords="${2}" href="${3}" alt="${0}">
-snippet area+
-	<area shape="${1:rect}" coords="${2}" href="${3}" alt="${4}">
-	area+
-snippet area:c
-	<area shape="circle" coords="${1}" href="${2}" alt="${0}">
-snippet area:d
-	<area shape="default" coords="${1}" href="${2}" alt="${0}">
-snippet area:p
-	<area shape="poly" coords="${1}" href="${2}" alt="${0}">
-snippet area:r
-	<area shape="rect" coords="${1}" href="${2}" alt="${0}">
-snippet article
-	<article>
-		${0}
-	</article>
-snippet article.
-	<article class="${1}">
-		${0}
-	</article>
-snippet article#
-	<article id="${1}">
-		${0}
-	</article>
-snippet aside
-	<aside>
-		${0}
-	</aside>
-snippet aside.
-	<aside class="${1}">
-		${0}
-	</aside>
-snippet aside#
-	<aside id="${1}">
-		${0}
-	</aside>
-snippet audio
-	<audio src="${1}">${0}</audio>
-snippet b
-	<b>${0}</b>
-snippet base
-	<base href="${1}" target="${0}">
-snippet bdi
-	<bdi>${0}</bdo>
-snippet bdo
-	<bdo dir="${1}">${0}</bdo>
-snippet bdo:l
-	<bdo dir="ltr">${0}</bdo>
-snippet bdo:r
-	<bdo dir="rtl">${0}</bdo>
-snippet blockquote
-	<blockquote>
-		${0}
-	</blockquote>
 snippet body
 	<body>
 		${0}
@@ -502,13 +441,8 @@ snippet li+
 	li+
 snippet lia
 	<li><a href="${0:#}">${1}</a></li>
-snippet lia+
-	<li><a href="${2:#}">${1}</a></li>
-	lia+
 snippet link
 	<link rel="${1}" href="${2}" title="${3}" type="${4}">
-snippet link:atom
-	<link rel="alternate" href="${1:atom.xml}" title="Atom" type="application/atom+xml">
 snippet link:s
 	<link rel="stylesheet" href="${1:style.css}">
 snippet link:css
@@ -523,85 +457,14 @@ snippet main
 	<main role="main">
 		${0}
 	</main>
-snippet map
-	<map name="${1}">
-		${0}
-	</map>
-snippet map.
-	<map class="${1}" name="${2}">
-		${0}
-	</map>
-snippet map#
-	<map name="${1}" id="${2:$1}>
-		${0}
-	</map>
-snippet map+
-	<map name="${1}">
-		<area shape="${2}" coords="${3}" href="${4}" alt="${5}" />${6}
-	</map>
-snippet mark
-	<mark>${0}</mark>
 snippet menu
 	<menu>
 		${0}
 	</menu>
-snippet menu:c
-	<menu type="context">
-		${0}
-	</menu>
-snippet menu:t
-	<menu type="toolbar">
-		${0}
-	</menu>
-snippet meta
-	<meta http-equiv="${1}" content="${2}">
-snippet meta:s
-	<meta ${0}>
-snippet meta:d
-	<meta name="description" content="${0}">
-snippet meta:compat
-	<meta http-equiv="X-UA-Compatible" content="IE=${1:7,8,edge}">
-snippet meta:refresh
-	<meta http-equiv="refresh" content="3;url=${0}">
-snippet meta:utf5
-	<meta charset="utf-8">
-snippet meta:utf
-	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-snippet meter
-	<meter>${0}</meter>
 snippet nav
 	<nav>
 		${0}
 	</nav>
-snippet nav.
-	<nav class="${1}">
-		${0}
-	</nav>
-snippet nav#
-	<nav id="${1}">
-		${0}
-	</nav>
-snippet noscript
-	<noscript>
-		${0}
-	</noscript>
-snippet object
-	<object data="${1}" type="${2}">
-		${3}
-	</object>
-# Embed QT Movie
-snippet movie
-	<object width="$2" height="$3" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
-	codebase="http://www.apple.com/qtactivex/qtplugin.cab">
-		<param name="src" value="$1">
-		<param name="controller" value="$4">
-		<param name="autoplay" value="$5">
-		<embed src="${1:movie.mov}"
-			width="${2:320}" height="${3:240}"
-			controller="${4:true}" autoplay="${5:true}"
-			scale="tofit" cache="true"
-			pluginspage="http://www.apple.com/quicktime/download/">
-	</object>
 snippet ol
 	<ol>
 		${0}
@@ -614,16 +477,8 @@ snippet ol#
 	<ol id="${1}">
 		${0}
 	</ol>
-snippet ol+
-	<ol>
-		<li>${1}</li>
-		li+${0}
-	</ol>
 snippet opt
-	<option value="${1}">${0:$1}</option>
-snippet opt+
-	<option value="${1}">${2:$1}</option>
-	opt+${0}
+	<option value="${1}">${0}</option>
 snippet optt
 	<option>${0}</option>
 snippet optgroup
