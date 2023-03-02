@@ -38,6 +38,6 @@ return function(use)
 		"edgedb/edgedb-vim",
 	})
 	use({
-		"sainnhe/sonokai",
+		"navarasu/onedark.nvim",
 	})
 end
