@@ -29,19 +29,22 @@ vim.wo.signcolumn = "yes"
 
 -- Set colorscheme
 vim.o.termguicolors = true -- enables highlight groups
--- vim.cmd([[colorscheme onedark]])
--- vim.cmd [[colorscheme moonfly]]
+
+-- Everblush setup
 local everblush = require("everblush")
 everblush.setup({
-	nvim_tree = { contrast = true },
+	nvim_tree = { contrast = true }, -- or use contrast = false to not apply contrast
 	override = {
 		LineNr = { fg = "#ACB1B0" },
 	},
-}) -- or use contrast = false to not apply contrast
+})
 vim.cmd("colorscheme everblush")
--- require("github-theme").setup({
--- 	theme_style = "dark",
--- })
+
+-- OneDark setup
+require("onedark").setup({
+	style = "deep",
+})
+require("onedark").load()
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
