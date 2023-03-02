@@ -41,10 +41,10 @@ everblush.setup({
 vim.cmd("colorscheme everblush")
 
 -- OneDark setup
-require("onedark").setup({
-	style = "deep",
-})
-require("onedark").load()
+-- require("onedark").setup({
+-- 	style = "deep",
+-- })
+-- require("onedark").load()
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
