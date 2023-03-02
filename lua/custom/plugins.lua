@@ -37,4 +37,7 @@ return function(use)
 	use({
 		"edgedb/edgedb-vim",
 	})
+	use({
+		"sainnhe/sonokai",
+	})
 end
