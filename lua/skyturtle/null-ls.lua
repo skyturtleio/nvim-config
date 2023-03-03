@@ -1,15 +1,14 @@
 local null_ls = require("null-ls")
 
 local sources = {
-	null_ls.builtins.formatting.mix,
+	null_ls.builtins.formatting.mix.with({
+		extra_filetypes = { "heex" },
+	}),
 	null_ls.builtins.formatting.deno_fmt,
 	null_ls.builtins.formatting.dprint.with({
 		extra_filetypes = { "astro", "svelte" },
 	}),
 	null_ls.builtins.formatting.stylua,
-	-- null_ls.builtins.diagnostics.eslint_d.with({
-	-- 	extra_filetypes = { "svelte" },
-	-- }),
 }
 
 -- Format on save
