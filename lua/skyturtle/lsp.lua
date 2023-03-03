@@ -91,13 +91,13 @@ mason_lspconfig.setup_handlers({
 			settings = servers[server_name],
 		})
 	end,
-	["html"] = function()
-		require("lspconfig").html.setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			filetypes = { "html", "heex" },
-		})
-	end,
+	-- ["html"] = function()
+	-- 	require("lspconfig").html.setup({
+	-- 		on_attach = on_attach,
+	-- 		capabilities = capabilities,
+	-- 		filetypes = { "html", "heex" },
+	-- 	})
+	-- end,
 	["denols"] = function()
 		require("lspconfig").denols.setup({
 			on_attach = on_attach,

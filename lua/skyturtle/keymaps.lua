@@ -54,6 +54,10 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>sd", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
+-- Miscellaneous
+-- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
+vim.keymap.set("n", "Q", "<nop>") -- from Primagean init.lua
+
 -- [[ Modes ]]
 --    normal_mode = "n",
 --    insert_mode = "i",
