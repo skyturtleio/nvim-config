@@ -124,6 +124,7 @@ mason_lspconfig.setup_handlers({
 })
 
 -- nvim-cmp setup
+local lspkind = require("lspkind") -- shows source and icon in nvim-cmp menu
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 require("luasnip.loaders.from_snipmate").load({ paths = "~/.config/nvim/snippets" })
@@ -137,10 +138,10 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-Space>"] = cmp.mapping.complete({}),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
+			select = false,
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -161,7 +162,20 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	}),
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = "symbol_text", -- show only symbol annotations
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+			menu =({
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+			})
+		}),
+	},
 	sources = {
+		{ name = "buffer" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	},

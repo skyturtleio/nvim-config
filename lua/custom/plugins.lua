@@ -38,6 +38,6 @@ return function(use)
 		"edgedb/edgedb-vim",
 	})
 	use({
-		"navarasu/onedark.nvim",
+		"onsails/lspkind.nvim",
 	})
 end
