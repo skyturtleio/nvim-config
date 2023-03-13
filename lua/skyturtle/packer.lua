@@ -9,27 +9,29 @@ end
 
 require("packer").startup(function(use)
 	-- Package manager
-	use("wbthomason/packer.nvim")
+	use({ "wbthomason/packer.nvim", commit = "1d0cf98" })
 
 	use({
 		-- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
+		commit = "4bb0f18",
 		requires = {
 			-- Automatically install LSPs to stdpath for neovim
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
+			{ "williamboman/mason.nvim", commit = "10ff879" },
+			{ "williamboman/mason-lspconfig.nvim", commit = "a81503f" },
 
 			-- Useful status updates for LSP
-			"j-hui/fidget.nvim",
+			{ "j-hui/fidget.nvim", commit = "688b4fe" },
 
 			-- Additional lua configuration, makes nvim stuff amazing
-			"folke/neodev.nvim",
+			{ "folke/neodev.nvim", commit = "abdc346" },
 		},
 	})
 
 	use({
 		-- Autocompletion
 		"hrsh7th/nvim-cmp",
+		commit = "feed47f",
 		requires = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	})
 
