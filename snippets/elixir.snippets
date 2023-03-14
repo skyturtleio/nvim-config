@@ -22,20 +22,6 @@ snippet ife if .. do .. else .. end
 	end
 snippet ife: if .. do: .. else:
 	if $1, do: ${2}, else: ${0}
-snippet unless unless .. do .. end
-	unless ${1} do
-		${0:${VISUAL}}
-	end
-snippet unless: unless .. do: ..
-	unless $1, do: ${0}
-snippet unlesse unless .. do .. else .. end
-	unless $1 do
-		${2:${VISUAL}}
-	else
-		${0}
-	end
-snippet unlesse: unless .. do: .. else:
-	unless $1, do: ${2}, else: ${0}
 snippet cond
 	cond do
 		${1} ->
@@ -71,8 +57,6 @@ snippet wie
 	end
 snippet sp
 	@spec ${1:name}(${2:args}) :: ${3:returns}
-snippet op
-	@opaque ${1:type_name} :: ${2:type}
 snippet ty
 	@type ${1:type_name} :: ${2:type}
 snippet typ
@@ -214,31 +198,16 @@ snippet setup
 	setup do
 		${1}
 	end
-snippet setupa
-	setup_all do
-		${1}
-	end
-snippet try try .. rescue .. end
-	try do
-		${1:${VISUAL}}
-	rescue
-		${2} -> ${0}
-	end
-snippet pry
-	require IEx; IEx.pry
-	${0}
-snippet p pipe
-	|> ${0}
-snippet >e pipe to each
-	|> Enum.each(fn ${1} -> ${0} end)
-snippet >i pipe to inspect
-	|> IO.inspect()
-snippet >il pipe to inspect with label
-	|> IO.inspect(label: "${1:label}")
-snippet impl
-	@impl true
-	def ${1:name} do
-		${0}
-	end
-snippet wl word list
-	~w(${0})
+snippet mou mount
+  def mount(_params, _session, socket) do
+    {:ok, socket}
+  end
+snippet he1 handle_event
+	def handle_event("${1:event}", _params, socket) do
+    {:noreply, socket}
+  end
+snippet hi handle_info
+	def handle_info(${1:message_atom}, socket) do
+    {:noreply, socket}
+  end
+
