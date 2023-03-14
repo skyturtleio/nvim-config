@@ -17,14 +17,14 @@ require("packer").startup(function(use)
 		commit = "4bb0f18",
 		requires = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim", commit = "10ff879" },
+			{ "williamboman/mason.nvim",           commit = "10ff879" },
 			{ "williamboman/mason-lspconfig.nvim", commit = "a81503f" },
 
 			-- Useful status updates for LSP
-			{ "j-hui/fidget.nvim", commit = "688b4fe" },
+			{ "j-hui/fidget.nvim",                 commit = "688b4fe" },
 
 			-- Additional lua configuration, makes nvim stuff amazing
-			{ "folke/neodev.nvim", commit = "abdc346" },
+			{ "folke/neodev.nvim",                 commit = "abdc346" },
 		},
 	})
 
@@ -32,12 +32,18 @@ require("packer").startup(function(use)
 		-- Autocompletion
 		"hrsh7th/nvim-cmp",
 		commit = "feed47f",
-		requires = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
+		requires = {
+			{ "hrsh7th/cmp-nvim-lsp",     commit = "0e6b2ed" },
+			{ "hrsh7th/cmp-buffer",       commit = "3022dbc" },
+			{ "L3MON4D3/LuaSnip",         commit = "a835e3d" },
+			{ "saadparwaiz1/cmp_luasnip", commit = "1809552" },
+		},
 	})
 
 	use({
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		commit = "89e5fa6",
 		run = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,
@@ -46,25 +52,36 @@ require("packer").startup(function(use)
 	use({
 		-- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		commit = "5b2bcb9",
 		after = "nvim-treesitter",
 	})
 
 	-- Git related plugins
-	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb")
-	use("lewis6991/gitsigns.nvim")
+	use({ "tpope/vim-fugitive", commit = "5b52a0f" })
+	use({ "tpope/vim-rhubarb", commit = "cad60fe" })
+	use({ "lewis6991/gitsigns.nvim", commit = "b1f9cf7" })
 
-	use("navarasu/onedark.nvim") -- Theme inspired by Atom
-	use("nvim-lualine/lualine.nvim") -- Fancier statusline
-	use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
-	use("numToStr/Comment.nvim") -- "gc" to comment visual regions/lines
+	use("navarasu/onedark.nvim")                                      -- Theme inspired by Atom
+	use({ "nvim-lualine/lualine.nvim", commit = "e99d733" })          -- Fancier statusline
+	use({ "lukas-reineke/indent-blankline.nvim", commit = "018bd04" }) -- Add indentation guides even on blank lines
+	use({ "numToStr/Comment.nvim", commit = "8d3aa5c" })              -- "gc" to comment visual regions/lines
 	-- use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically
 
 	-- Fuzzy Finder (files, lsp, etc)
-	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
+	use({
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		commit = "766a45a",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
 
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 })
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		commit = "580b6c4",
+		run = "make",
+		cond = vim.fn.executable("make") == 1,
+	})
 
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")

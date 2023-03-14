@@ -4,6 +4,7 @@
 return function(use)
 	use({
 		"nvim-tree/nvim-tree.lua",
+		commit = "1d79a64",
 		requires = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
@@ -16,6 +17,7 @@ return function(use)
 	})
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
+		commit = "09e9925",
 	})
 	use({
 		"Everblush/everblush.nvim",
@@ -24,9 +26,6 @@ return function(use)
 	use({
 		"bluz71/vim-moonfly-colors",
 		branch = "cterm-compat",
-	})
-	use({
-		"projekt0n/github-nvim-theme",
 	})
 	use({
 		"rafamadriz/friendly-snippets",

@@ -49,5 +49,7 @@ vim.cmd("colorscheme everblush")
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
+vim.o.clipboard = "unnamedplus"
+
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
