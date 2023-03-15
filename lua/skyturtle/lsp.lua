@@ -167,6 +167,8 @@ cmp.setup({
 		}),
 	},
 	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 		{
 			name = "buffer",
 			option = {
@@ -175,8 +177,6 @@ cmp.setup({
 				end,
 			},
 		},
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
 	},
 })
 

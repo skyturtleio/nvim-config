@@ -203,11 +203,14 @@ snippet mou mount
     {:ok, socket}
   end
 snippet he1 handle_event
-	def handle_event("${1:event}", _params, socket) do
+	def handle_event("${1:event}", _values, socket) do
     {:noreply, socket}
   end
 snippet hi handle_info
 	def handle_info(${1:message_atom}, socket) do
     {:noreply, socket}
   end
-
+snippet % <% %>
+	<% ${0} %>
+snippet = <%= %>
+	<%= ${0} %>
