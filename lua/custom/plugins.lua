@@ -17,7 +17,7 @@ return function(use)
 	})
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
-		commit = "09e9925",
+		commit = "13dd1fc",
 	})
 	use({
 		"Everblush/everblush.nvim",

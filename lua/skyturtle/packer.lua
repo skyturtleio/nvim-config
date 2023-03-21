@@ -14,28 +14,28 @@ require("packer").startup(function(use)
 	use({
 		-- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
-		commit = "4bb0f18",
+		commit = "0f94c5f",
 		requires = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim",           commit = "10ff879" },
+			{ "williamboman/mason.nvim", commit = "10ff879" },
 			{ "williamboman/mason-lspconfig.nvim", commit = "a81503f" },
 
 			-- Useful status updates for LSP
-			{ "j-hui/fidget.nvim",                 commit = "688b4fe" },
+			{ "j-hui/fidget.nvim", commit = "688b4fe" },
 
 			-- Additional lua configuration, makes nvim stuff amazing
-			{ "folke/neodev.nvim",                 commit = "abdc346" },
+			{ "folke/neodev.nvim", commit = "abdc346" },
 		},
 	})
 
 	use({
 		-- Autocompletion
 		"hrsh7th/nvim-cmp",
-		commit = "feed47f",
+		commit = "777450f",
 		requires = {
-			{ "hrsh7th/cmp-nvim-lsp",     commit = "0e6b2ed" },
-			{ "hrsh7th/cmp-buffer",       commit = "3022dbc" },
-			{ "L3MON4D3/LuaSnip",         commit = "a835e3d" },
+			{ "hrsh7th/cmp-nvim-lsp", commit = "0e6b2ed" },
+			{ "hrsh7th/cmp-buffer", commit = "3022dbc" },
+			{ "L3MON4D3/LuaSnip", commit = "a835e3d" },
 			{ "saadparwaiz1/cmp_luasnip", commit = "1809552" },
 		},
 	})
@@ -43,7 +43,7 @@ require("packer").startup(function(use)
 	use({
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		commit = "89e5fa6",
+		commit = "8ae2c8f",
 		run = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,
@@ -52,7 +52,7 @@ require("packer").startup(function(use)
 	use({
 		-- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		commit = "5b2bcb9",
+		commit = "582cbb5",
 		after = "nvim-treesitter",
 	})
 
@@ -61,10 +61,10 @@ require("packer").startup(function(use)
 	use({ "tpope/vim-rhubarb", commit = "cad60fe" })
 	use({ "lewis6991/gitsigns.nvim", commit = "b1f9cf7" })
 
-	use("navarasu/onedark.nvim")                                      -- Theme inspired by Atom
-	use({ "nvim-lualine/lualine.nvim", commit = "e99d733" })          -- Fancier statusline
+	use("navarasu/onedark.nvim") -- Theme inspired by Atom
+	use({ "nvim-lualine/lualine.nvim", commit = "e99d733" }) -- Fancier statusline
 	use({ "lukas-reineke/indent-blankline.nvim", commit = "018bd04" }) -- Add indentation guides even on blank lines
-	use({ "numToStr/Comment.nvim", commit = "8d3aa5c" })              -- "gc" to comment visual regions/lines
+	use({ "numToStr/Comment.nvim", commit = "8d3aa5c" }) -- "gc" to comment visual regions/lines
 	-- use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically
 
 	-- Fuzzy Finder (files, lsp, etc)
