@@ -203,7 +203,7 @@ snippet mount mount
     {:ok, socket}
   end
 snippet he1 handle_event
-	def handle_event("${1:event}", _values, socket) do
+	def handle_event("${1:event}", _params, socket) do
     {:noreply, socket}
   end
 snippet hi handle_info
