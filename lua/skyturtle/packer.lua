@@ -43,7 +43,7 @@ require("packer").startup(function(use)
 	use({
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		commit = "8ae2c8f",
+		commit = "06075ec",
 		run = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,
@@ -52,7 +52,7 @@ require("packer").startup(function(use)
 	use({
 		-- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		commit = "582cbb5",
+		commit = "b55fe61",
 		after = "nvim-treesitter",
 	})
 
