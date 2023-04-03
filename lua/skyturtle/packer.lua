@@ -14,17 +14,17 @@ require("packer").startup(function(use)
 	use({
 		-- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
-		commit = "0f94c5f",
+		commit = "0bc0c38",
 		requires = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim", commit = "10ff879" },
-			{ "williamboman/mason-lspconfig.nvim", commit = "a81503f" },
+			{ "williamboman/mason.nvim", commit = "dbf34ee" },
+			{ "williamboman/mason-lspconfig.nvim", commit = "b64fded" },
 
 			-- Useful status updates for LSP
-			{ "j-hui/fidget.nvim", commit = "688b4fe" },
+			{ "j-hui/fidget.nvim", commit = "0ba1e16" },
 
 			-- Additional lua configuration, makes nvim stuff amazing
-			{ "folke/neodev.nvim", commit = "abdc346" },
+			{ "folke/neodev.nvim", commit = "024d1a0" },
 		},
 	})
 
@@ -35,7 +35,7 @@ require("packer").startup(function(use)
 		requires = {
 			{ "hrsh7th/cmp-nvim-lsp", commit = "0e6b2ed" },
 			{ "hrsh7th/cmp-buffer", commit = "3022dbc" },
-			{ "L3MON4D3/LuaSnip", commit = "a835e3d" },
+			{ "L3MON4D3/LuaSnip", commit = "bc8ec05" },
 			{ "saadparwaiz1/cmp_luasnip", commit = "1809552" },
 		},
 	})
