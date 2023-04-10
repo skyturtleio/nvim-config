@@ -4,7 +4,7 @@
 return function(use)
 	use({
 		"nvim-tree/nvim-tree.lua",
-		commit = "1d79a64",
+		commit = "086bf31",
 		requires = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
@@ -17,7 +17,7 @@ return function(use)
 	})
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
-		commit = "13dd1fc",
+		commit = "7e36218",
 	})
 	use({
 		"Everblush/everblush.nvim",
