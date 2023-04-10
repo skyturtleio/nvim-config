@@ -39,4 +39,5 @@ return function(use)
 	use({
 		"onsails/lspkind.nvim",
 	})
+	use({ "monsonjeremy/onedark.nvim", branch = "treesitter" })
 end

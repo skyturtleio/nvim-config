@@ -61,7 +61,6 @@ require("packer").startup(function(use)
 	use({ "tpope/vim-rhubarb", commit = "cad60fe" })
 	use({ "lewis6991/gitsigns.nvim", commit = "b1f9cf7" })
 
-	use("navarasu/onedark.nvim") -- Theme inspired by Atom
 	use({ "nvim-lualine/lualine.nvim", commit = "e99d733" }) -- Fancier statusline
 	use({ "lukas-reineke/indent-blankline.nvim", commit = "018bd04" }) -- Add indentation guides even on blank lines
 	use({ "numToStr/Comment.nvim", commit = "8d3aa5c" }) -- "gc" to comment visual regions/lines

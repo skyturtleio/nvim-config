@@ -31,20 +31,14 @@ vim.wo.signcolumn = "yes"
 vim.o.termguicolors = true -- enables highlight groups
 
 -- Everblush setup
-local everblush = require("everblush")
-everblush.setup({
-	nvim_tree = { contrast = true }, -- or use contrast = false to not apply contrast
-	override = {
-		LineNr = { fg = "#ACB1B0" },
-	},
-})
-vim.cmd("colorscheme everblush")
-
--- OneDark setup
--- require("onedark").setup({
--- 	style = "deep",
+-- local everblush = require("everblush")
+-- everblush.setup({
+-- 	nvim_tree = { contrast = true }, -- or use contrast = false to not apply contrast
+-- 	override = {
+-- 		LineNr = { fg = "#ACB1B0" },
+-- 	},
 -- })
--- require("onedark").load()
+vim.cmd("colorscheme everblush")
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
