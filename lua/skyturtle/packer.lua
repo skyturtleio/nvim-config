@@ -14,17 +14,17 @@ require("packer").startup(function(use)
 	use({
 		-- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
-		commit = "27e9e1d",
+		commit = "5da5745",
 		requires = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim", commit = "2311d9d" },
-			{ "williamboman/mason-lspconfig.nvim", commit = "a8d5db8" },
+			{ "williamboman/mason.nvim", commit = "b68d3be" },
+			{ "williamboman/mason-lspconfig.nvim", commit = "4f1c727" },
 
 			-- Useful status updates for LSP
-			{ "j-hui/fidget.nvim", commit = "0ba1e16" },
+			{ "j-hui/fidget.nvim", commit = "f1c375b" },
 
 			-- Additional lua configuration, makes nvim stuff amazing
-			{ "folke/neodev.nvim", commit = "864b350" },
+			{ "folke/neodev.nvim", commit = "a2b1d8f" },
 		},
 	})
 
@@ -43,7 +43,7 @@ require("packer").startup(function(use)
 	use({
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
-		commit = "fa9fe9a",
+		commit = "8d2eb35",
 		run = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,
@@ -70,7 +70,7 @@ require("packer").startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		commit = "766a45a",
+		commit = "e651c37",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 
