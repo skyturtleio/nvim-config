@@ -31,11 +31,11 @@ require("packer").startup(function(use)
 	use({
 		-- Autocompletion
 		"hrsh7th/nvim-cmp",
-		commit = "777450f",
+		commit = "2743dd9",
 		requires = {
-			{ "hrsh7th/cmp-nvim-lsp", commit = "0e6b2ed" },
+			{ "hrsh7th/cmp-nvim-lsp", commit = "44b16d1" },
 			{ "hrsh7th/cmp-buffer", commit = "3022dbc" },
-			{ "L3MON4D3/LuaSnip", commit = "8fdb06d" },
+			{ "L3MON4D3/LuaSnip", commit = "105b5f7" },
 			{ "saadparwaiz1/cmp_luasnip", commit = "1809552" },
 		},
 	})
@@ -70,14 +70,14 @@ require("packer").startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		commit = "e651c37",
+		commit = "c5b11f4",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
-		commit = "580b6c4",
+		commit = "9bc8237",
 		run = "make",
 		cond = vim.fn.executable("make") == 1,
 	})
