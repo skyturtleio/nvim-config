@@ -4,7 +4,7 @@
 return function(use)
 	use({
 		"nvim-tree/nvim-tree.lua",
-		commit = "086bf31",
+		commit = "1fe3228",
 		requires = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},

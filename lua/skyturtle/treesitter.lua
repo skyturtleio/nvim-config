@@ -8,7 +8,6 @@ require("nvim-treesitter.configs").setup({
 		"elixir",
 		"eex",
 		"heex",
-		"go",
 		"javascript",
 		"typescript",
 		"json",
